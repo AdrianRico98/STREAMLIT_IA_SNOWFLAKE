@@ -15,7 +15,7 @@ except:
     session = Session.builder.configs(st.secrets["connections"]["snowflake"]).create() 
 
 llm_model = "claude-3-5-sonnet"
-example_prompt = "What is Python?"
+example_prompt = "What is Snowflake?"
 prompt = st.text_area("prompt", example_prompt)
 
 # Choose streaming method
