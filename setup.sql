@@ -41,6 +41,11 @@ CREATE OR REPLACE STREAMLIT streamlit_cache_cortex
   ROOT_LOCATION = '@STREAMLIT_APP_DB.STREAMLIT_APP_SCHEMA.streamlit_demo/branches/main/'
   MAIN_FILE = 'cache_responses.py'
   QUERY_WAREHOUSE = STREAMLIT_WH;
+
+CREATE OR REPLACE STREAMLIT streamlit_progress_responses
+  ROOT_LOCATION = '@STREAMLIT_APP_DB.STREAMLIT_APP_SCHEMA.streamlit_demo/branches/main/'
+  MAIN_FILE = 'progress_responses.py'
+  QUERY_WAREHOUSE = STREAMLIT_WH;
   
 
   
