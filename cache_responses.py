@@ -14,11 +14,11 @@ except:
     from snowflake.snowpark import Session
     session = Session.builder.configs(st.secrets["connections"]["snowflake"]).create() 
 
-llm_model = "mistral-7b"
+llm_model = "mistral-7b"   
 
 #We define the call of the llm in a cache function
 @st.cache_data
-def call_cortex_llm(prompt_text):
+def call_cortex_llm(prompt_text): 
     """Makes a call to Cortex AI with the given prompt."""
     df = session.range(1).select(
         ai_complete(model=llm_model, prompt=prompt_text).alias("response")

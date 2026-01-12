@@ -16,7 +16,7 @@ except:
 
 llm_model = "claude-3-5-sonnet"
 example_prompt = "What is Snowflake?"
-prompt = st.text_area("prompt", example_prompt)
+prompt = st.text_area("prompt", example_prompt) 
 
 # Choose streaming method
 streaming_method = st.radio(
@@ -51,7 +51,7 @@ if st.button("Generate Response"):
                 prompt=prompt
             )
             for chunk in output:
-                yield chunk
+                yield chunks
                 time.sleep(0.01)  # Small delay for smooth streaming
         
         with st.spinner(f"Generating response with `{llm_model}`"):
