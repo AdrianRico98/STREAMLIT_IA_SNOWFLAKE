@@ -1,6 +1,7 @@
 import streamlit as st
 import json
 from snowflake.snowpark.functions import ai_complete
+import time
 
 # Connect to Snowflake
 try:
@@ -12,16 +13,25 @@ except:
     from snowflake.snowpark import Session
     session = Session.builder.configs(st.secrets["connections"]["snowflake"]).create()
 
+# Encapsulate the call of the llm
 def call_llm(prompt_text: str) -> str:
     """Call Snowflake Cortex LLM."""
     df = session.range(1).select(
         ai_complete(model="claude-3-5-sonnet", prompt=prompt_text).alias("response")
-    ) #ai_complete es mas robusta entre entornos
+    ) #ai_complete is more robust between environments
     response_raw = df.collect()[0][0]
     response_json = json.loads(response_raw)
     if isinstance(response_json, dict):
         return response_json.get("choices", [{}])[0].get("messages", "")
     return str(response_json)
+
+# Generate stream
+def stream_generator():
+    """yields the words with a little delay for a smooth experience"""
+    response_text = call_llm(full_prompt)
+    for word in response_text.split(" "):
+        yield word + " "
+        time.sleep(0.02)
 
 st.title(":material/chat: Chatbot with History")
 
@@ -56,19 +66,19 @@ if prompt := st.chat_input("Type your message..."):
     st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user"):
         st.markdown(prompt)
+
+    # Build the full conversation history for context
+    conversation = "\n\n".join([
+        f"{'User' if msg['role'] == 'user' else 'Assistant'}: {msg['content']}"
+        for msg in st.session_state.messages
+    ])
+    full_prompt = f"{conversation}\n\nAssistant:"
+
     
     # Generate and display assistant response
     with st.chat_message("assistant"):
-        with st.spinner("Thinking..."):
-            # Build the full conversation history for context
-            conversation = "\n\n".join([
-                f"{'User' if msg['role'] == 'user' else 'Assistant'}: {msg['content']}"
-                for msg in st.session_state.messages
-            ])
-            full_prompt = f"{conversation}\n\nAssistant:"
-            
-            response = call_llm(full_prompt)
-        st.markdown(response)
+        with st.spinner("Processing..."):
+            response = st.write_stream(stream_generator)
     
     # Add assistant response to state
     st.session_state.messages.append({"role": "assistant", "content": response})
