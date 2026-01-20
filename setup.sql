@@ -33,34 +33,42 @@ ALTER GIT REPOSITORY STREAMLIT_APP_DB.STREAMLIT_APP_SCHEMA.streamlit_demo FETCH;
 
 -- Crear el streamlit app
 CREATE OR REPLACE STREAMLIT streamlit_streaming_cortex
-  ROOT_LOCATION = '@STREAMLIT_APP_DB.STREAMLIT_APP_SCHEMA.streamlit_demo/branches/main/'
-  MAIN_FILE = 'stream_responses.py'
-  QUERY_WAREHOUSE = STREAMLIT_WH;
+ROOT_LOCATION = '@STREAMLIT_APP_DB.STREAMLIT_APP_SCHEMA.streamlit_demo/branches/main/'
+MAIN_FILE = 'stream_responses.py'
+QUERY_WAREHOUSE = STREAMLIT_WH;
 
 CREATE OR REPLACE STREAMLIT streamlit_cache_cortex
-  ROOT_LOCATION = '@STREAMLIT_APP_DB.STREAMLIT_APP_SCHEMA.streamlit_demo/branches/main/'
-  MAIN_FILE = 'cache_responses.py'
-  QUERY_WAREHOUSE = STREAMLIT_WH;
+ROOT_LOCATION = '@STREAMLIT_APP_DB.STREAMLIT_APP_SCHEMA.streamlit_demo/branches/main/'
+MAIN_FILE = 'cache_responses.py'
+QUERY_WAREHOUSE = STREAMLIT_WH;
 
 CREATE OR REPLACE STREAMLIT streamlit_progress_responses
-  ROOT_LOCATION = '@STREAMLIT_APP_DB.STREAMLIT_APP_SCHEMA.streamlit_demo/branches/main/'
-  MAIN_FILE = 'progress_responses.py'
-  QUERY_WAREHOUSE = STREAMLIT_WH;
+ROOT_LOCATION = '@STREAMLIT_APP_DB.STREAMLIT_APP_SCHEMA.streamlit_demo/branches/main/'
+MAIN_FILE = 'progress_responses.py'
+QUERY_WAREHOUSE = STREAMLIT_WH;
 
 CREATE OR REPLACE STREAMLIT streamlit_chat_elements
-  ROOT_LOCATION = '@STREAMLIT_APP_DB.STREAMLIT_APP_SCHEMA.streamlit_demo/branches/main/'
-  MAIN_FILE = 'chat_elements.py'
-  QUERY_WAREHOUSE = STREAMLIT_WH;
+ROOT_LOCATION = '@STREAMLIT_APP_DB.STREAMLIT_APP_SCHEMA.streamlit_demo/branches/main/'
+MAIN_FILE = 'chat_elements.py'
+QUERY_WAREHOUSE = STREAMLIT_WH;
 
 CREATE OR REPLACE STREAMLIT streamlit_model_comparison
-  ROOT_LOCATION = '@STREAMLIT_APP_DB.STREAMLIT_APP_SCHEMA.streamlit_demo/branches/main/'
-  MAIN_FILE = 'model_comparison.py'
-  QUERY_WAREHOUSE = STREAMLIT_WH;
+ROOT_LOCATION = '@STREAMLIT_APP_DB.STREAMLIT_APP_SCHEMA.streamlit_demo/branches/main/'
+MAIN_FILE = 'model_comparison.py'
+QUERY_WAREHOUSE = STREAMLIT_WH;
 
-  CREATE OR REPLACE STREAMLIT streamlit_rag_file_uploader
-  ROOT_LOCATION = '@STREAMLIT_APP_DB.STREAMLIT_APP_SCHEMA.streamlit_demo/branches/main/'
-  MAIN_FILE = 'rag_file_uploader.py'
-  QUERY_WAREHOUSE = STREAMLIT_WH;
-  
+CREATE OR REPLACE STREAMLIT streamlit_rag_file_uploader
+ROOT_LOCATION = '@STREAMLIT_APP_DB.STREAMLIT_APP_SCHEMA.streamlit_demo/branches/main/'
+MAIN_FILE = 'rag_file_uploader.py'
+QUERY_WAREHOUSE = STREAMLIT_WH;
 
-  
+CREATE OR REPLACE STREAMLIT streamlit_chunking_files_uploaded
+ROOT_LOCATION = '@STREAMLIT_APP_DB.STREAMLIT_APP_SCHEMA.streamlit_demo/branches/main/'
+MAIN_FILE = 'chunking_files_uploaded.py'
+QUERY_WAREHOUSE = STREAMLIT_WH;
+
+
+CREATE OR REPLACE STREAMLIT streamlit_embedding_chunks
+ROOT_LOCATION = '@STREAMLIT_APP_DB.STREAMLIT_APP_SCHEMA.streamlit_demo/branches/main/'
+MAIN_FILE = 'embedding_chunks.py'
+QUERY_WAREHOUSE = STREAMLIT_WH;
