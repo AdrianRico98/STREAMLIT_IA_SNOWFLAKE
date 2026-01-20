@@ -51,6 +51,16 @@ CREATE OR REPLACE STREAMLIT streamlit_chat_elements
   ROOT_LOCATION = '@STREAMLIT_APP_DB.STREAMLIT_APP_SCHEMA.streamlit_demo/branches/main/'
   MAIN_FILE = 'chat_elements.py'
   QUERY_WAREHOUSE = STREAMLIT_WH;
+
+CREATE OR REPLACE STREAMLIT streamlit_model_comparison
+  ROOT_LOCATION = '@STREAMLIT_APP_DB.STREAMLIT_APP_SCHEMA.streamlit_demo/branches/main/'
+  MAIN_FILE = 'model_comparison.py'
+  QUERY_WAREHOUSE = STREAMLIT_WH;
+
+  CREATE OR REPLACE STREAMLIT streamlit_rag_file_uploader
+  ROOT_LOCATION = '@STREAMLIT_APP_DB.STREAMLIT_APP_SCHEMA.streamlit_demo/branches/main/'
+  MAIN_FILE = 'rag_file_uploader.py'
+  QUERY_WAREHOUSE = STREAMLIT_WH;
   
 
   
