@@ -72,3 +72,10 @@ CREATE OR REPLACE STREAMLIT streamlit_embedding_chunks
 ROOT_LOCATION = '@STREAMLIT_APP_DB.STREAMLIT_APP_SCHEMA.streamlit_demo/branches/main/'
 MAIN_FILE = 'embedding_chunks.py'
 QUERY_WAREHOUSE = STREAMLIT_WH;
+
+
+CREATE OR REPLACE STREAMLIT streamlit_create_cortex_search_service
+ROOT_LOCATION = '@STREAMLIT_APP_DB.STREAMLIT_APP_SCHEMA.streamlit_demo/branches/main/'
+MAIN_FILE = 'create_cortex_search_service.py'
+QUERY_WAREHOUSE = STREAMLIT_WH;
+

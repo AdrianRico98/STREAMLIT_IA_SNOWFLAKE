@@ -3,7 +3,7 @@ from snowflake.core import Root
 import pandas as pd
 
 st.title(":material/search: Cortex Search for Customer Reviews")
-st.write("Create a semantic search service for the customer reviews processed in Days 16-18.")
+st.write("Create a semantic search service for the customer reviews processed in Days 16-18. El embedding manual deja de ser necesario de este modo")
 
 # Connect to Snowflake
 try:
